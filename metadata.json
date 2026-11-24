@@ -1,0 +1,6 @@
+{
+  "name": "Le Bazar — Alphabette",
+  "description": "Studio d'humour, tribunal des petits riens, fausses Unes de presse satirique et défis photo locaux par Alphabette.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

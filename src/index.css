@@ -1,0 +1,113 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    font-size: 16px;
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+
+  *:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 2px;
+  }
+
+  .dark *:focus-visible {
+    outline: 3px solid #fde047;
+  }
+}
+
+/* BIG mode scales main application content cleanly without affecting the fixed-px Double Barre */
+.bazar-content-normal {
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.bazar-content-big {
+  font-size: 20px;
+  line-height: 1.65;
+}
+
+.bazar-content-big h2 {
+  font-size: clamp(23px, 4.5vw, 32px) !important;
+  line-height: 1.2 !important;
+}
+
+.bazar-content-big h3 {
+  font-size: clamp(20px, 3.8vw, 26px) !important;
+  line-height: 1.25 !important;
+}
+
+.bazar-content-big p,
+.bazar-content-big input,
+.bazar-content-big textarea,
+.bazar-content-big button {
+  font-size: max(17px, 0.95em);
+}
+
+/* Editorial satirical print textures & pop shadows */
+.shadow-pop {
+  box-shadow: 4px 4px 0px 0px #0f172a;
+}
+
+.shadow-pop-sm {
+  box-shadow: 2px 2px 0px 0px #0f172a;
+}
+
+.dark .shadow-pop {
+  box-shadow: 4px 4px 0px 0px rgba(250, 204, 21, 0.32);
+}
+
+.dark .shadow-pop-sm {
+  box-shadow: 2px 2px 0px 0px rgba(250, 204, 21, 0.28);
+}
+
+.newsprint-bg {
+  background-color: #faf8f4;
+  background-image: radial-gradient(rgba(15, 23, 42, 0.045) 1px, transparent 0);
+  background-size: 16px 16px;
+}
+
+.dark .newsprint-bg {
+  background-color: #141418;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 0);
+}
+
+@keyframes micPulse {
+  0% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 12px rgba(220, 38, 38, 0);
+  }
+  100% {
+    transform: scale(0.98);
+    box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+  }
+}
+
+.mic-recording {
+  animation: micPulse 1.2s infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mic-recording {
+    animation: none;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}
